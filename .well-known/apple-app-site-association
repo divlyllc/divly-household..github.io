@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "FDK2Y374V7.co.divly.app",
+        "paths": ["/invite", "/invite/*"],
+        "components": [
+          { "/": "/invite", "comment": "Household invite landing" },
+          { "/": "/invite/*", "comment": "Household invite landing" }
+        ]
+      }
+    ]
+  }
+}
