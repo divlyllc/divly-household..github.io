@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divly Help Center</title>
+  <meta name="description" content="Help, guides and answers for Divly — the app that helps your household run together." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&family=Nunito:wght@900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" style="text-decoration:none"><span class="wordmark">divl<span class="dot">y</span></span></a>
+      <nav>
+        <a href="index.html">Help Center</a>
+        <a href="articles/getting-started.html">Getting Started</a>
+        <a href="articles/troubleshooting.html">Troubleshooting</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>How can we help?</h1>
+    <p>Guides and answers for getting the most out of Divly — running your home together, one shared list at a time.</p>
+    <div class="search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Search the help center…" aria-label="Search help articles" autocomplete="off" />
+    </div>
+  </section>
+
+  <main class="cards" id="cards">
+    <a class="card" href="articles/getting-started.html" data-k="account sign in apple google email household setup invite partner onboarding">
+      <span class="badge t-blue">🚀</span>
+      <h3>Getting Started</h3>
+      <p>Create your account, set up your household and invite your partner.</p>
+    </a>
+    <a class="card" href="articles/home-dashboard.html" data-k="home dashboard rings score streak focus check-in mood lists overview">
+      <span class="badge t-blue">🏠</span>
+      <h3>Your Home Dashboard</h3>
+      <p>Understand the rings, your Divly Score, streaks, Your Focus and the weekly check-in.</p>
+    </a>
+    <a class="card" href="articles/tasks.html" data-k="tasks add due date priority reminder recurring complete archive reassign reschedule">
+      <span class="badge t-blue">✓</span>
+      <h3>Tasks</h3>
+      <p>Add, schedule, prioritize, assign and complete tasks — including recurring ones.</p>
+    </a>
+    <a class="card" href="articles/habits.html" data-k="habits frequency log streak weekly monthly views suggest partner">
+      <span class="badge t-teal">↻</span>
+      <h3>Habits</h3>
+      <p>Build habits, choose how often they repeat, log them and watch your streaks grow.</p>
+    </a>
+    <a class="card" href="articles/lists-shopping.html" data-k="lists shopping mode items reuse recurring grocery packing checklist">
+      <span class="badge t-purple">🧺</span>
+      <h3>Lists &amp; Shopping</h3>
+      <p>Create shared lists, shop distraction-free with Shopping Mode, and reuse your favorites.</p>
+    </a>
+    <a class="card" href="articles/ask-divly.html" data-k="ask divly ai assistant suggestions prompts action cards replies limit">
+      <span class="badge t-pink">✨</span>
+      <h3>Ask Divly</h3>
+      <p>Your built-in assistant — get suggestions, plan your week and turn ideas into tasks.</p>
+    </a>
+    <a class="card" href="articles/calendar-sync.html" data-k="calendar google apple icloud sync import events classifier connect">
+      <span class="badge t-blue">📅</span>
+      <h3>Calendar Sync</h3>
+      <p>Connect Google or Apple Calendar so your events flow into Divly automatically.</p>
+    </a>
+    <a class="card" href="articles/notifications.html" data-k="notifications reminders push email quiet hours preferences types">
+      <span class="badge t-teal">🔔</span>
+      <h3>Notifications</h3>
+      <p>Choose what you're notified about, set quiet hours and pick push or email.</p>
+    </a>
+    <a class="card" href="articles/score-streaks-badges.html" data-k="score streak freeze badges achievements gamification rings calculation">
+      <span class="badge t-pink">🏅</span>
+      <h3>Score, Streaks &amp; Badges</h3>
+      <p>How your Divly Score is calculated, how streaks work, and earning achievements.</p>
+    </a>
+    <a class="card" href="articles/household-partner.html" data-k="household partner invite members manage owner reassign remove">
+      <span class="badge t-purple">👥</span>
+      <h3>Household &amp; Partner</h3>
+      <p>Invite your partner, manage members and keep everyone in sync.</p>
+    </a>
+    <a class="card" href="articles/account-billing.html" data-k="account billing subscription trial premium plan payment delete account">
+      <span class="badge t-blue">💳</span>
+      <h3>Account &amp; Billing</h3>
+      <p>Your free trial, Divly Premium, managing your account and deleting it.</p>
+    </a>
+    <a class="card" href="articles/privacy-data.html" data-k="privacy data security hide my email apple export delete gdpr">
+      <span class="badge t-teal">🔒</span>
+      <h3>Privacy &amp; Your Data</h3>
+      <p>How your data is handled, Apple's Hide My Email, and removing your data.</p>
+    </a>
+    <a class="card" href="articles/troubleshooting.html" data-k="troubleshooting problems sign in sync notifications not working help fix">
+      <span class="badge t-pink">🛠️</span>
+      <h3>Troubleshooting</h3>
+      <p>Fixes for the most common issues with sign-in, syncing and notifications.</p>
+    </a>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="wordmark" style="font-size:20px">divl<span class="dot">y</span></span>
+      <span>© Divly · Run your home together.</span>
+      <span><a href="https://divly.co">divly.co</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Lightweight client-side filter over the topic cards.
+    var q = document.getElementById('q');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#cards .card'));
+    q.addEventListener('input', function () {
+      var term = q.value.trim().toLowerCase();
+      cards.forEach(function (c) {
+        var hay = (c.getAttribute('data-k') + ' ' + c.textContent).toLowerCase();
+        c.style.display = !term || hay.indexOf(term) !== -1 ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
