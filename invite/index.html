@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join a Divly household</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500&family=Nunito:wght@900&display=swap" rel="stylesheet" />
+  <style>
+    :root{ --blue:#2563FF; --ink:#0E1726; --muted:#6B7280; --border:rgba(14,23,38,.22); }
+    *{box-sizing:border-box} html,body{margin:0;height:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);
+      background:#FFF;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+    .card{max-width:420px;width:100%}
+    .wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
+    .wordmark .y{color:var(--blue)}
+    h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:28px;line-height:1.15;margin:24px 0 8px}
+    p{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 20px}
+    .code{font-size:24px;font-weight:500;letter-spacing:3px;background:#F4F4F4;border:1px solid var(--border);
+      border-radius:14px;padding:14px 18px;display:inline-block;margin-bottom:24px}
+    .btn{display:block;width:100%;background:var(--blue);color:#fff;text-decoration:none;font-weight:500;font-size:16px;
+      padding:15px;border-radius:999px;margin:10px 0}
+    .btn.alt{background:#fff;color:var(--ink);border:1px solid var(--border)}
+    .hint{font-size:13px;color:var(--muted);margin-top:16px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="wordmark">divl<span class="y">y</span></div>
+    <h1>You're invited to a household</h1>
+    <p>Open this link on your phone to join. If you already have Divly installed, it'll open automatically.</p>
+    <div class="code" id="code">—</div>
+    <!-- TODO: replace these with the real store URLs once the app is listed. -->
+    <a class="btn" id="ios" href="https://apps.apple.com/app/idREPLACE_APP_STORE_ID">Get Divly on the App Store</a>
+    <a class="btn alt" id="android" href="https://play.google.com/store/apps/details?id=co.divly.app">Get Divly on Google Play</a>
+    <p class="hint">Already have the app? Open Divly and enter the code above under Join a household.</p>
+  </div>
+  <script>
+    (function () {
+      var code = new URLSearchParams(location.search).get('code') || '';
+      code = code.trim().toUpperCase();
+      if (/^[A-Z0-9]{8}$/.test(code)) {
+        document.getElementById('code').textContent = code;
+        // If the app is installed, the Universal/App Link handoff opens it
+        // directly (no JS needed). As a fallback for older setups, try the
+        // custom scheme; if nothing handles it the user stays on this page
+        // and uses the store buttons.
+        setTimeout(function () { location.href = 'divly://invite?code=' + encodeURIComponent(code); }, 50);
+      } else {
+        document.getElementById('code').textContent = 'Invalid link';
+      }
+      // Send Android visitors' primary button to Play, iOS to App Store.
+      var ua = navigator.userAgent || '';
+      if (/android/i.test(ua)) {
+        var a = document.getElementById('android'); a.parentNode.insertBefore(a, document.getElementById('ios'));
+      }
+    })();
+  </script>
+</body>
+</html>
