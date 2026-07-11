@@ -98,10 +98,12 @@ a:hover { text-decoration: underline; }
   font-family: 'Nunito', sans-serif;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--blue);
   font-size: 26px;
   line-height: 1;
 }
+/* The whole "divly" wordmark renders in Divly blue. .dot is kept (same color)
+   in case the brand later wants a contrasting accent on the "y" again. */
 .wordmark .dot { color: var(--blue); }
 
 /* ---------- Top bar ---------- */
