@@ -1,0 +1,22 @@
+# Divly — divly.co
+# Allow all classic crawlers AND AI answer-engine crawlers (GEO).
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI search / answer-engine bots:
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://divly.co/sitemap.xml
