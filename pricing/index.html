@@ -4,20 +4,42 @@
 <!-- ===== SEO: unique title (47 chars) + description (<155) + self-canonical ===== -->
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Divly Pricing — One Plan, 7-Day Free Trial</title>
-<meta name="description" content="Divly pricing is simple: one plan per household, not per person. Start with a 7-day free trial on iOS or Android and cancel anytime. Billing FAQ included.">
+<meta name="description" content="Divly pricing: one plan per household, not per person. Monthly or yearly, everything included for both of you, starting with a 7-day free trial.">
 <link rel="canonical" href="https://divly.co/pricing">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Divly"><meta property="og:title" content="Divly Pricing — One Plan, 7-Day Free Trial"><meta property="og:description" content="One plan per household. 7-day free trial. Cancel anytime."><meta property="og:url" content="https://divly.co/pricing"><meta property="og:image" content="https://divly.co/og/pricing.png">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Divly Pricing — One Plan, 7-Day Free Trial"><meta name="twitter:description" content="One plan per household. 7-day free trial. Cancel anytime."><meta name="twitter:image" content="https://divly.co/og/pricing.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Divly"><meta property="og:title" content="Divly Pricing — One Plan, 7-Day Free Trial"><meta property="og:description" content="One plan per household, not per person. Monthly or yearly, everything included for both of you, starting with a 7-day free trial."><meta property="og:url" content="https://divly.co/pricing"><meta property="og:image" content="https://divly.co/og/pricing.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Divly Pricing — One Plan, 7-Day Free Trial"><meta name="twitter:description" content="One plan per household, not per person. Monthly or yearly, everything included for both of you, starting with a 7-day free trial."><meta name="twitter:image" content="https://divly.co/og/pricing.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232563FF'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23FBFAF7'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&family=Nunito:wght@900&display=swap">
 <link rel="stylesheet" href="/styles.css">
 <script src="/site.js"></script>
+<!-- Pricing-only styles: two plan cards mirroring the in-app paywall (yearly emphasized, pink SAVE badge). Scoped to this page. -->
+<style>
+.plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto}
+@media(max-width:700px){.plan-cards{grid-template-columns:1fr}}
+.plan-card{position:relative;display:flex;align-items:center;gap:16px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.plan-card--featured{border-color:var(--brand);background:var(--brand-soft)}
+.plan-radio{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);position:relative}
+.plan-radio--on{border-color:var(--brand)}
+.plan-radio--on::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--brand)}
+.plan-body{flex:1;min-width:0}
+.plan-badge{position:absolute;top:-11px;right:16px;background:var(--pink);color:#fff;font-size:.62rem;font-weight:500;letter-spacing:.09em;padding:4px 11px;border-radius:999px;box-shadow:var(--shadow)}
+.plan-term{font-size:.7rem;font-weight:500;letter-spacing:.11em;color:var(--muted);margin:0 0 4px}
+.plan-price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.plan-price{font-size:1.35rem;font-weight:500;letter-spacing:-.02em;color:var(--ink)}
+.plan-permonth{font-size:.85rem;font-weight:500;color:var(--muted)}
+.plan-sub{font-size:.8rem;color:var(--muted);margin:6px 0 0}
+.plan-cta-wrap{max-width:760px;margin:24px auto 0;text-align:center}
+.includes-box{max-width:820px;margin:0 auto}
+.includes-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 34px;margin:22px 0 0;text-align:left}
+.includes-list li{break-inside:avoid}
+@media(max-width:700px){.includes-list{grid-template-columns:1fr}}
+</style>
 <!-- ===== GEO: SoftwareApplication with offers (identical facts to Home/Features) ===== -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Divly","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Household management app for couples and families: shared tasks, habits and lists with real-time sync, daily progress rings, a Divly Score, and Ask Divly, an AI helper.","url":"https://divly.co/","offers":{"@type":"Offer","price":"7.99","priceCurrency":"USD","description":"Per household, monthly. 7-day free trial, cancel anytime."},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1200"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Divly","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Household management app for couples and families: shared to-do lists, chores and habits with real-time sync, daily progress rings where every task has one clear owner, and Ask Divly, an AI helper.","url":"https://divly.co/","offers":{"@type":"Offer","price":"14.99","priceCurrency":"USD","description":"Per household, monthly, or $119 per year. 7-day free trial, cancel anytime."},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1200"}}</script>
 <!-- ===== GEO: BreadcrumbList ===== -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://divly.co/"},{"@type":"ListItem","position":2,"name":"Pricing","item":"https://divly.co/pricing"}]}</script>
 <!-- ===== GEO: FAQPage — billing questions, answered in first sentences ===== -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Divly have a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every Divly household starts with a 7-day free trial with full access to all features. You can cancel anytime during the trial and pay nothing."}},{"@type":"Question","name":"Is Divly priced per person or per household?","acceptedAnswer":{"@type":"Answer","text":"Per household. One Divly plan covers everyone in your home — you never pay per seat, and adding your partner costs nothing extra."}},{"@type":"Question","name":"How do I cancel my Divly subscription?","acceptedAnswer":{"@type":"Answer","text":"You can cancel anytime from the app's settings or through your App Store or Google Play subscription settings. Your household keeps full access until the end of the paid period."}},{"@type":"Question","name":"What happens to our data if we cancel?","acceptedAnswer":{"@type":"Answer","text":"Your household's tasks, habits and lists stay readable, and you can export or delete your data at any time. Write access resumes if you resubscribe."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does Divly have a free trial?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every Divly household starts with a 7-day free trial with full access to all features. You can cancel anytime during the trial and pay nothing."}},{"@type":"Question","name":"Is Divly priced per person or per household?","acceptedAnswer":{"@type":"Answer","text":"Per household. One Divly plan covers both of you, so you never pay per seat, and adding your partner costs nothing extra."}},{"@type":"Question","name":"How do I cancel my Divly subscription?","acceptedAnswer":{"@type":"Answer","text":"You can cancel anytime from the app's settings or through your App Store or Google Play subscription settings. Your household keeps full access until the end of the paid period."}},{"@type":"Question","name":"What happens to our data if we cancel?","acceptedAnswer":{"@type":"Answer","text":"Your household's tasks, habits and lists stay readable, and you can export or delete your data at any time. Write access resumes if you resubscribe."}},{"@type":"Question","name":"How many people can use Divly?","acceptedAnswer":{"@type":"Answer","text":"Each Divly household includes two adults, and one plan covers both of you. Divly is built for the two people running the home: spouses, partners, or a mom and grandma tag team. Every feature is included for both."}}]}</script>
 </head>
 <body>
 <header class="site-header"><div class="container nav-row">
@@ -31,25 +53,51 @@
 <!-- ===== h1 targets "household app pricing / free trial" ===== -->
 <section class="hero center" style="padding-bottom:24px"><div class="container">
 <p class="eyebrow">Pricing</p>
-<h1>Household app pricing that covers your whole home</h1>
-<p class="lead" style="margin:0 auto">Divly is sold per household, not per person. One plan, everyone included, starting with a 7-day free trial.</p>
+<h1>Household app pricing that covers both of you</h1>
+<p class="lead" style="margin:0 auto">Divly is sold per household, not per person. One plan, both of you included, starting with a 7-day free trial.</p>
 </div></section>
-<!-- ===== Single plan card ===== -->
+<!-- ===== Two plan cards (mirrors the in-app paywall: yearly emphasized, pink SAVE badge) ===== -->
 <section class="section" style="padding-top:30px"><div class="container">
-<div class="price-card">
-<p class="eyebrow" style="margin-bottom:6px">The Household Plan</p>
-<div class="price"><sup>$</sup>7.99<span class="small muted" style="font-size:1.05rem;font-weight:400"> /month</span></div>
-<p class="price-note">per household · or $59.99/year (save 37%)</p>
-<ul class="check-list">
-<li><strong>Everyone in your home</strong> on one plan — partners and family members</li>
-<li><strong>Unlimited</strong> shared tasks, habits and lists with real-time sync</li>
-<li>Daily <strong>progress rings</strong>, Divly Score, streaks and badges</li>
-<li><strong>Ask Divly</strong> AI helper, powered by Claude</li>
-<li>Optional <strong>read-only calendar connect</strong></li>
-<li>iOS and Android — mix platforms freely</li>
+<div class="plan-cards">
+<div class="plan-card plan-card--featured">
+<span class="plan-radio plan-radio--on" aria-hidden="true"></span>
+<span class="plan-badge">SAVE 33%</span>
+<div class="plan-body">
+<p class="plan-term">YEARLY</p>
+<div class="plan-price-row"><span class="plan-price">$119 / per year</span><span class="plan-permonth">$9.92 / mo</span></div>
+<p class="plan-sub">For your household · Both of you, one plan</p>
+</div>
+</div>
+<div class="plan-card">
+<span class="plan-radio" aria-hidden="true"></span>
+<div class="plan-body">
+<p class="plan-term">MONTHLY</p>
+<div class="plan-price-row"><span class="plan-price">$14.99 / month</span></div>
+<p class="plan-sub">For your household · Both of you, one plan</p>
+</div>
+</div>
+</div>
+<div class="plan-cta-wrap">
+<a class="btn btn-primary btn-lg" href="#" style="min-width:280px">Start 7-day free trial</a>
+<p class="small muted" style="margin:14px 0 0">Free for 7 days, then your selected plan. Cancel anytime, with no charge if you cancel within 7 days.</p>
+</div>
+</div></section>
+<!-- ===== Shared "what you get": both plans include everything, so neither card needs its own list ===== -->
+<section class="section" style="padding-top:0"><div class="container">
+<div class="price-card includes-box" style="text-align:left">
+<div class="center"><p class="eyebrow" style="margin-bottom:6px">Every plan</p><h2 class="fs20" style="font-size:1.5rem;margin-bottom:8px">Every plan includes everything</h2></div>
+<p class="center muted" style="max-width:620px;margin:0 auto">One plan covers your whole household: two adults running the show. Spouses, partners, mom and grandma. Both of you get it all.</p>
+<ul class="check-list includes-list">
+<li>Shared to-do lists, tasks and habits, synced in real time</li>
+<li>Every task has one clear owner</li>
+<li>Progress rings for the household or each person</li>
+<li>Today and your full plan in one view, with your calendars connected</li>
+<li>Streaks and badges for wins worth celebrating</li>
+<li>Ask Divly, your AI helper, powered by Claude: it researches, proposes a plan, and builds your tasks and lists</li>
+<li>Weekly check-ins, so when one of you is stretched thin, the other can take some of the load</li>
+<li>iOS and Android, mix and match</li>
+<li>7-day free trial, cancel anytime</li>
 </ul>
-<a class="btn btn-primary btn-lg w100" href="#" style="width:100%">Start 7-day free trial</a>
-<p class="small muted" style="margin:14px 0 0">Full access during the trial. Cancel anytime — no charge if you cancel within 7 days.</p>
 </div>
 </div></section>
 <!-- ===== Trial explainer: extractable topic sentences ===== -->
@@ -57,7 +105,7 @@
 <div class="center"><p class="eyebrow">How the free trial works</p><h2>Try Divly free for 7 days</h2></div>
 <div class="grid-3" style="margin-top:44px">
 <div class="card"><div class="step-num" aria-hidden="true">1</div><h3>Start on either phone</h3><p>Download Divly on iOS or Android and create your household. The trial starts when you do — no charge up front.</p></div>
-<div class="card"><div class="step-num" aria-hidden="true">2</div><h3>Invite your partner free</h3><p>Your plan covers the household, so inviting your partner (or family) never adds cost.</p></div>
+<div class="card"><div class="step-num" aria-hidden="true">2</div><h3>Invite your partner free</h3><p>Invite your other half. Spouse, partner, mom, grandma: whoever helps you run the show. Divly is built for two.</p></div>
 <div class="card"><div class="step-num" aria-hidden="true">3</div><h3>Keep it or cancel</h3><p>Love it? Do nothing and your plan continues. Not for you? Cancel anytime in-app or via your app store — one tap, no calls.</p></div>
 </div>
 </div></section>
@@ -66,9 +114,10 @@
 <div class="center"><p class="eyebrow">Billing FAQ</p><h2>Pricing questions, answered directly</h2></div>
 <div class="faq" style="margin-top:34px">
 <details><summary>Does Divly have a free trial?</summary><div class="faq-a"><p>Yes. Every Divly household starts with a 7-day free trial with full access to all features. You can cancel anytime during the trial and pay nothing.</p></div></details>
-<details><summary>Is Divly priced per person or per household?</summary><div class="faq-a"><p>Per household. One Divly plan covers everyone in your home — you never pay per seat, and adding your partner costs nothing extra.</p></div></details>
+<details><summary>Is Divly priced per person or per household?</summary><div class="faq-a"><p>Per household. One Divly plan covers both of you, so you never pay per seat, and adding your partner costs nothing extra.</p></div></details>
 <details><summary>How do I cancel my Divly subscription?</summary><div class="faq-a"><p>You can cancel anytime from the app's settings or through your App Store or Google Play subscription settings. Your household keeps full access until the end of the paid period.</p></div></details>
 <details><summary>What happens to our data if we cancel?</summary><div class="faq-a"><p>Your household's tasks, habits and lists stay readable, and you can export or delete your data at any time. Write access resumes if you resubscribe. Questions? <a href="mailto:support@divly.co">support@divly.co</a>.</p></div></details>
+<details><summary>How many people can use Divly?</summary><div class="faq-a"><p>Each Divly household includes two adults, and one plan covers both of you. Divly is built for the two people running the home: spouses, partners, or a mom and grandma tag team. Every feature is included for both.</p></div></details>
 </div>
 </div></section>
 <!-- ===== Internal links back to Features / For couples ===== -->
