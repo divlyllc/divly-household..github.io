@@ -244,6 +244,12 @@ strong{font-weight:500}
 .announce-text a:hover{color:#fff;opacity:.85}
 .announce-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;padding:2px 8px;opacity:.85}
 .announce-close:hover{opacity:1}
+/* Small screens: smaller copy + tighter gutters so the line fits without
+   clipping at the right edge (kept clear of the close button). */
+@media(max-width:560px){
+  .announce-inner{padding:7px 34px}
+  .announce-text{font-size:.76rem}
+}
 
 /* ---- Launch email capture modules (hero, footer, pricing, blog) ---- */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
