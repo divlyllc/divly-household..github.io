@@ -1,12 +1,15 @@
 /* Divly — minimal vanilla JS: theme switch + mobile nav toggle + launch capture.
    Deferred-safe, no layout shift (theme applied before first paint). */
 (function () {
-  /* TODO(launch): set NOTIFY_ENDPOINT to the email provider's POST URL
-     (Formspree form URL, Buttondown, or Kit). Until it is set, the signup
-     forms render fully but show the inline error state on submit. Every
-     module posts { email, source } where source is one of:
-     hero, pricing, footer, blog, bar. */
-  var NOTIFY_ENDPOINT = "";
+  /* Kit (formerly ConvertKit) form submission endpoint.
+     Paste the FULL URL from your Kit form's HTML embed `action="..."`
+     attribute here, e.g. "https://app.kit.com/forms/1234567/subscriptions".
+     Until it is set, the signup forms render fully but show the inline
+     error state on submit. Each module sends the subscriber email plus a
+     "source" custom field (create a custom field named "source" in Kit to
+     record it) valued one of: hero, pricing, footer, blog, bar. Double
+     opt-in is controlled by the Kit form's own settings. */
+  var KIT_FORM_ACTION = "https://app.kit.com/forms/9697162/subscriptions";
   var ANNOUNCE_KEY = "divly-announce-dismissed";
   var KEY = "divly-theme";
   function apply(t) { document.documentElement.setAttribute("data-theme", t); }
@@ -62,18 +65,28 @@
     var email = input && input.value ? input.value.trim() : "";
     function fail() { if (errMsg) errMsg.removeAttribute("hidden"); if (btn) btn.disabled = false; }
     if (!email) { fail(); return; }
-    if (!NOTIFY_ENDPOINT) {
-      console.warn("Divly notify: NOTIFY_ENDPOINT not configured; signup not sent.");
+    if (!KIT_FORM_ACTION) {
+      console.warn("Divly notify: KIT_FORM_ACTION not set; signup not sent.");
       fail();
       return;
     }
     if (btn) btn.disabled = true;
-    fetch(NOTIFY_ENDPOINT, {
+    var body = new URLSearchParams();
+    body.set("email_address", email);
+    body.set("fields[source]", form.getAttribute("data-source") || "site");
+    fetch(KIT_FORM_ACTION, {
       method: "POST",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email, source: form.getAttribute("data-source") || "site" })
+      headers: { Accept: "application/json" },
+      body: body
     }).then(function (r) {
-      if (!r.ok) throw new Error("bad status");
+      return r.json().then(function (d) { return { ok: r.ok, data: d }; },
+                          function () { return { ok: r.ok, data: {} }; });
+    }).then(function (res) {
+      // Kit returns { status: "success" } (200) once the subscriber is
+      // accepted; with double opt-in a confirmation email is then sent.
+      if (!res.ok || (res.data.status && res.data.status !== "success")) {
+        throw new Error("kit rejected");
+      }
       form.setAttribute("hidden", "");
       if (okMsg) okMsg.removeAttribute("hidden");
     }).catch(fail);
