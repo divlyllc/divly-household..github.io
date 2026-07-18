@@ -10,7 +10,6 @@
      record it) valued one of: hero, pricing, footer, blog, bar. Double
      opt-in is controlled by the Kit form's own settings. */
   var KIT_FORM_ACTION = "https://app.kit.com/forms/9697162/subscriptions";
-  var ANNOUNCE_KEY = "divly-announce-dismissed";
   var KEY = "divly-theme";
   function apply(t) { document.documentElement.setAttribute("data-theme", t); }
   // Always set an explicit data-theme so [data-theme="dark"] rules are the
@@ -38,12 +37,12 @@
       nt.setAttribute("aria-expanded", header.classList.contains("nav-open"));
       return;
     }
-    // Dismiss announcement bar (remembered for the session)
+    // Dismiss announcement bar for the current view only (it returns on
+    // the next page load / reload, so a hard reload always shows it again).
     var ac = e.target.closest("[data-announce-close]");
     if (ac) {
       var bar = document.getElementById("announce-bar");
       if (bar) bar.setAttribute("hidden", "");
-      try { sessionStorage.setItem(ANNOUNCE_KEY, "1"); } catch (e3) {}
       return;
     }
     // Close mobile nav after choosing a link
@@ -90,15 +89,5 @@
       form.setAttribute("hidden", "");
       if (okMsg) okMsg.removeAttribute("hidden");
     }).catch(fail);
-  });
-
-  // Hide the announcement bar on load if dismissed earlier this session.
-  document.addEventListener("DOMContentLoaded", function () {
-    try {
-      if (sessionStorage.getItem(ANNOUNCE_KEY)) {
-        var bar = document.getElementById("announce-bar");
-        if (bar) bar.setAttribute("hidden", "");
-      }
-    } catch (e) {}
   });
 })();
