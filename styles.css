@@ -88,7 +88,11 @@ strong{font-weight:500}
 .btn-lg{padding:17px 34px;font-size:1.08rem}
 
 /* ---- Header / nav ---- */
-.site-header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+/* Opaque header (no translucency / backdrop-filter): the frosted blur
+   produced a transient rectangular compositing artifact in the top-left
+   during navigation (visible in both light and dark). An opaque sticky
+   header avoids that whole class of backdrop-filter paint bugs. */
+.site-header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
 .nav-row{display:flex;align-items:center;gap:28px;height:68px}
 /* Wordmark = Nunito 900 lowercase "divly" (the app Wordmark component) */
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--font-logo);font-weight:900;font-size:1.4rem;letter-spacing:-.03em;text-transform:lowercase;color:var(--brand)}
