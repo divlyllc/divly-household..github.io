@@ -16,8 +16,9 @@
 <style>
 .plan-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto}
 @media(max-width:700px){.plan-cards{grid-template-columns:1fr}}
-.plan-card{position:relative;display:flex;align-items:center;gap:16px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.plan-card{position:relative;display:flex;align-items:center;gap:16px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);cursor:pointer;user-select:none;transition:border-color .15s ease,background-color .15s ease}
 .plan-card--featured{border-color:var(--brand);background:var(--brand-soft)}
+.plan-card:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
 .plan-radio{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);position:relative}
 .plan-radio--on{border-color:var(--brand)}
 .plan-radio--on::after{content:"";position:absolute;inset:4px;border-radius:50%;background:var(--brand)}
@@ -30,9 +31,19 @@
 .plan-sub{font-size:.8rem;color:var(--muted);margin:6px 0 0}
 .plan-cta-wrap{max-width:760px;margin:24px auto 0;text-align:center}
 .includes-box{max-width:820px;margin:0 auto}
-.includes-list{display:grid;grid-template-columns:1fr 1fr;gap:2px 34px;margin:22px 0 0;text-align:left}
-.includes-list li{break-inside:avoid}
-@media(max-width:700px){.includes-list{grid-template-columns:1fr}}
+/* One CSS grid with explicit row placement: column 1 item n and column 2 item n share row n; each row height driven by its taller cell; align-items:start top-aligns first text lines. Row 5 / column 2 is intentionally empty. */
+.includes-list{display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(5,auto);gap:12px 34px;align-items:start;margin:22px 0 0;text-align:left}
+.includes-list li{margin:0}
+.includes-list li:nth-child(1){grid-column:1;grid-row:1}
+.includes-list li:nth-child(2){grid-column:1;grid-row:2}
+.includes-list li:nth-child(3){grid-column:1;grid-row:3}
+.includes-list li:nth-child(4){grid-column:1;grid-row:4}
+.includes-list li:nth-child(5){grid-column:1;grid-row:5}
+.includes-list li:nth-child(6){grid-column:2;grid-row:1}
+.includes-list li:nth-child(7){grid-column:2;grid-row:2}
+.includes-list li:nth-child(8){grid-column:2;grid-row:3}
+.includes-list li:nth-child(9){grid-column:2;grid-row:4}
+@media(max-width:700px){.includes-list{grid-template-columns:1fr;grid-template-rows:none}.includes-list li{grid-column:1!important;grid-row:auto!important}}
 </style>
 <!-- ===== GEO: SoftwareApplication with offers (identical facts to Home/Features) ===== -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Divly","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Household management app for couples and families: shared to-do lists, chores and habits with real-time sync, daily progress rings where every task has one clear owner, and Ask Divly, an AI helper.","url":"https://divly.co/","offers":{"@type":"Offer","price":"14.99","priceCurrency":"USD","description":"Per household, monthly, or $119 per year. 7-day free trial, cancel anytime."},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"1200"}}</script>
@@ -59,8 +70,8 @@
 </div></section>
 <!-- ===== Two plan cards (mirrors the in-app paywall: yearly emphasized, pink SAVE badge) ===== -->
 <section class="section" style="padding-top:30px"><div class="container">
-<div class="plan-cards">
-<div class="plan-card">
+<div class="plan-cards" role="radiogroup" aria-label="Choose a billing plan">
+<div class="plan-card" data-plan-card data-plan="monthly" role="radio" aria-checked="false" tabindex="0" aria-label="Monthly plan, $14.99 per month">
 <span class="plan-radio" aria-hidden="true"></span>
 <div class="plan-body">
 <p class="plan-term">MONTHLY</p>
@@ -68,7 +79,7 @@
 <p class="plan-sub">For your household · Both of you, one plan</p>
 </div>
 </div>
-<div class="plan-card plan-card--featured">
+<div class="plan-card plan-card--featured" data-plan-card data-plan="yearly" role="radio" aria-checked="true" tabindex="0" aria-label="Yearly plan, $119 per year, $9.92 per month, save 33 percent">
 <span class="plan-radio plan-radio--on" aria-hidden="true"></span>
 <span class="plan-badge">SAVE 33%</span>
 <div class="plan-body">
@@ -79,7 +90,8 @@
 </div>
 </div>
 <div class="plan-cta-wrap">
-<a class="btn btn-primary btn-lg" href="#" style="min-width:280px">Start 7-day free trial</a>
+<input type="hidden" id="selected-plan" name="plan" value="yearly">
+<a class="btn btn-primary btn-lg" href="#" data-plan-cta data-plan="yearly" style="min-width:280px">Start 7-day free trial</a>
 <p class="small muted" style="margin:14px 0 0">Free for 7 days, then your selected plan. Cancel anytime, with no charge if you cancel within 7 days.</p>
 </div>
 </div></section>
@@ -89,16 +101,29 @@
 <div class="center"><p class="eyebrow" style="margin-bottom:6px">Every plan</p><h2 class="fs20" style="font-size:1.5rem;margin-bottom:8px">Every plan includes everything</h2></div>
 <p class="center muted" style="max-width:620px;margin:0 auto">One plan covers your whole household: two adults running the show. Spouses, partners, mom and grandma. Both of you get it all.</p>
 <ul class="check-list includes-list">
+<li>7-day free trial, cancel anytime</li>
 <li>Shared to-do lists, tasks and habits, synced in real time</li>
-<li>Every task has one clear owner</li>
 <li>Progress rings for the household or each person</li>
+<li>Weekly check-ins, so when one of you is stretched thin, the other can take some of the load</li>
+<li>iOS and Android, mix and match</li>
+<li>Every task has one clear owner</li>
 <li>Today and your full plan in one view, with your calendars connected</li>
 <li>Streaks and badges for wins worth celebrating</li>
 <li>Ask Divly, your AI helper, powered by Claude: it researches, proposes a plan, and builds your tasks and lists</li>
-<li>Weekly check-ins, so when one of you is stretched thin, the other can take some of the load</li>
-<li>iOS and Android, mix and match</li>
-<li>7-day free trial, cancel anytime</li>
 </ul>
+</div>
+</div></section>
+<!-- ===== Launch capture (spec §4): email signup between what-you-get and the free-trial steps. Reuses the shared .notify markup + global submit JS; source tagged "pricing". ===== -->
+<section class="section" style="padding-top:0"><div class="container center">
+<div class="price-card" style="max-width:640px;margin:0 auto">
+<h2 class="fs20" style="font-size:1.5rem;margin-bottom:8px">Be first in the door</h2>
+<p class="muted" style="max-width:520px;margin:0 auto">Divly is coming Summer 2026. Leave your email and we'll tell you the moment your household can start its free trial.</p>
+<div class="notify" style="margin:18px auto 0;text-align:left">
+<form class="notify-form" data-notify-form data-source="pricing"><label class="sr-only" for="notify-pricing">Email address</label><input class="notify-input" id="notify-pricing" type="email" name="email" required placeholder="you@email.com" autocomplete="email"><button class="btn btn-primary notify-btn" type="submit">Get notified</button></form>
+<p class="notify-consent">Launch news only. Unsubscribe anytime. <a href="/privacy/privacy.html">Privacy</a>.</p>
+<p class="notify-success" hidden>You're on the list. See you at launch.</p>
+<p class="notify-error" hidden>That didn't go through. Try again?</p>
+</div>
 </div>
 </div></section>
 <!-- ===== Trial explainer: extractable topic sentences ===== -->
@@ -143,5 +168,32 @@
 </div>
 <div class="footer-bottom"><span>© 2026 Divly · divly.co · Sold per household · 7-day free trial</span><span><a href="/privacy/privacy.html">Privacy</a> · <a href="/terms/terms.html">Terms</a></span></div>
 </div></footer>
+<!-- Pricing-only: plan tile selection. Whole card is the target (click/tap + keyboard). YEARLY stays the default selection; the CTA + hidden field track the chosen plan. Scoped to this page. -->
+<script>
+(function(){
+  var cards=[].slice.call(document.querySelectorAll('[data-plan-card]'));
+  if(!cards.length) return;
+  var cta=document.querySelector('[data-plan-cta]');
+  var field=document.getElementById('selected-plan');
+  function select(card){
+    cards.forEach(function(c){
+      var on=c===card;
+      c.classList.toggle('plan-card--featured',on);
+      c.setAttribute('aria-checked',on?'true':'false');
+      var radio=c.querySelector('.plan-radio');
+      if(radio) radio.classList.toggle('plan-radio--on',on);
+    });
+    var plan=card.getAttribute('data-plan');
+    if(field) field.value=plan;
+    if(cta) cta.setAttribute('data-plan',plan);
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click',function(){select(c);});
+    c.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '||e.key==='Spacebar'){e.preventDefault();select(c);}
+    });
+  });
+})();
+</script>
 </body>
 </html>
