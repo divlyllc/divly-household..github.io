@@ -113,7 +113,7 @@ strong{font-weight:500}
 }
 
 /* ---- Breadcrumb (inner pages, mirrors BreadcrumbList JSON-LD) ---- */
-.breadcrumb{padding:18px 0 0;font-size:.88rem;color:var(--muted)}
+.breadcrumb{padding:18px 24px 0;font-size:.88rem;color:var(--muted)}
 .breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:0;margin:0}
 .breadcrumb li+li::before{content:"/";margin-right:6px;color:var(--line)}
 .breadcrumb a{color:var(--muted)}
@@ -253,6 +253,9 @@ strong{font-weight:500}
 .notify-form[hidden]{display:none}
 .notify-input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:999px;padding:13px 20px;font-size:1rem;font-family:var(--font-body);background:#fff;color:#0E1726}
 .notify-input::placeholder{color:#6B7280}
+/* The input is always white; in dark mode the default --line border reads as
+   a black outline on it, so match the border to the white fill. */
+[data-theme="dark"] .notify-input{border-color:#fff}
 .notify-btn{flex:none}
 .notify-consent{font-size:.8rem;color:var(--muted);margin:10px 0 0}
 .notify-consent a{color:var(--muted);text-decoration:underline}
