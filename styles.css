@@ -27,6 +27,7 @@
   --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --font-logo:'Nunito',var(--font-body);
   --pop:linear-gradient(120deg,var(--brand),var(--purple));
+  --pop-solid:#5B37E8; /* solid pop (constant in light+dark) for the top bar */
 }
 [data-theme="dark"]{
   --bg:#000000; --bg2:#0B0B10; --surface:#14141A;
@@ -87,7 +88,7 @@ strong{font-weight:500}
 .btn-lg{padding:17px 34px;font-size:1.08rem}
 
 /* ---- Header / nav ---- */
-.site-header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transform:translateZ(0)}
+.site-header{position:sticky;top:0;z-index:50;background:color-mix(in oklab,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-row{display:flex;align-items:center;gap:28px;height:68px}
 /* Wordmark = Nunito 900 lowercase "divly" (the app Wordmark component) */
 .logo{display:flex;align-items:center;gap:9px;font-family:var(--font-logo);font-weight:900;font-size:1.4rem;letter-spacing:-.03em;text-transform:lowercase;color:var(--brand)}
@@ -236,10 +237,10 @@ strong{font-weight:500}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:44px;padding-top:24px;color:var(--muted);font-size:.85rem}
 
 /* ---- Announcement bar (launch capture) ---- */
-/* translateZ(0) + backface-visibility promote the bar to its own compositor
-   layer so the wide pop gradient paints as one texture — without it, the
-   gradient shows a vertical raster-tile seam during navigation repaints. */
-.announce-bar{background:var(--pop);color:#fff;transform:translateZ(0);backface-visibility:hidden}
+/* Solid pop fill (NOT the --pop gradient): a full-width gradient here showed
+   a vertical seam during navigation repaints. A solid color is identical on
+   both sides of any repaint boundary, so no seam can ever be visible. */
+.announce-bar{background:var(--pop-solid);color:#fff}
 .announce-bar[hidden]{display:none}
 .announce-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;min-height:40px;padding:7px 40px}
 .announce-text{margin:0;font-size:.9rem;font-weight:500;text-align:center;color:#fff}
