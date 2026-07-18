@@ -22,6 +22,7 @@
   --font-display:'Fraunces',Georgia,'Times New Roman',serif;
   --font-body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
   --font-logo:'Nunito',var(--font-body);
+  --pop:linear-gradient(120deg,var(--brand),var(--purple));
 }
 [data-theme="dark"]{
   --bg:#000000; --bg2:#0B0B10; --surface:#14141A;
@@ -231,13 +232,13 @@ strong{font-weight:500}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:44px;padding-top:24px;color:var(--muted);font-size:.85rem}
 
 /* ---- Announcement bar (launch capture) ---- */
-.announce-bar{background:var(--brand);color:var(--on-brand)}
+.announce-bar{background:var(--pop);color:#fff}
 .announce-bar[hidden]{display:none}
 .announce-inner{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;min-height:40px;padding:7px 40px}
-.announce-text{margin:0;font-size:.9rem;font-weight:500;text-align:center;color:var(--on-brand)}
-.announce-text a{color:var(--on-brand);text-decoration:underline;white-space:nowrap}
-.announce-text a:hover{color:var(--on-brand);opacity:.85}
-.announce-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:0;color:var(--on-brand);font-size:1.35rem;line-height:1;cursor:pointer;padding:2px 8px;opacity:.85}
+.announce-text{margin:0;font-size:.9rem;font-weight:500;text-align:center;color:#fff}
+.announce-text a{color:#fff;text-decoration:underline;white-space:nowrap}
+.announce-text a:hover{color:#fff;opacity:.85}
+.announce-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:0;color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;padding:2px 8px;opacity:.85}
 .announce-close:hover{opacity:1}
 
 /* ---- Launch email capture modules (hero, footer, pricing, blog) ---- */
@@ -253,10 +254,46 @@ strong{font-weight:500}
 .notify-success,.notify-error{margin:10px 0 0;font-weight:500}
 .notify-success{color:var(--ok)}
 .notify-error{color:var(--pink)}
-/* Footer launch module: a row above the footer columns */
-.footer-notify{display:grid;grid-template-columns:1fr auto;gap:8px 28px;align-items:center;padding-bottom:34px;margin-bottom:34px;border-bottom:1px solid var(--line)}
-.footer-notify .notify-copy h4{margin:0 0 2px}
-.footer-notify .notify-copy p{margin:0}
+/* Footer launch module: its own color-pop card above the footer columns */
+.footer-notify{display:grid;grid-template-columns:1fr auto;gap:8px 28px;align-items:center;background:var(--pop);color:#fff;border-radius:calc(var(--r) + 4px);padding:28px 32px;margin-bottom:44px;box-shadow:var(--shadow)}
+.footer-notify .notify-copy h4{margin:0 0 2px;color:#fff;text-transform:none;letter-spacing:normal;font-size:1.05rem}
+.footer-notify .notify-copy p{margin:0;color:rgba(255,255,255,.85)}
 .footer-notify .notify-form{min-width:300px}
 .footer-notify .notify-consent,.footer-notify .notify-success,.footer-notify .notify-error{grid-column:1 / -1}
+.footer-notify .notify-consent{color:rgba(255,255,255,.82)}
+.footer-notify .notify-success,.footer-notify .notify-error{color:#fff}
 @media(max-width:640px){.footer-notify{grid-template-columns:1fr}}
+
+/* Hero launch signup band: full-width color-pop strip below the hero */
+.notify-band{background:var(--pop);color:#fff;padding:40px 0}
+.notify-band .notify{margin:0 auto;max-width:560px;text-align:center}
+.notify-band .notify-form{justify-content:center}
+.notify-band .notify-eyebrow{color:#fff}
+.notify-band .notify-consent{color:rgba(255,255,255,.85)}
+.notify-band .notify-success,.notify-band .notify-error{color:#fff}
+#notify{scroll-margin-top:90px}
+/* White CTA button on the color-pop backgrounds (band + footer module) */
+.notify-band .btn-primary,.footer-notify .btn-primary{background:#fff;color:var(--brand)}
+.notify-band .btn-primary:hover,.footer-notify .btn-primary:hover{background:#fff;color:var(--brand-deep);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+
+/* Mobile: stack the email field above the Get notified button */
+@media(max-width:640px){
+  .notify-form{flex-direction:column;align-items:stretch}
+  .notify-form .notify-input,.notify-form .notify-btn{width:100%}
+}
+
+/* Mobile: center card icons and step numbers at the top of each card */
+@media(max-width:640px){
+  .card .icon-chip,.card .step-num{margin-left:auto;margin-right:auto}
+}
+
+/* Mobile header: hamburger left, logo centered, theme picker right */
+@media(max-width:840px){
+  .nav-toggle{order:1}
+  .logo{order:2;margin:0 auto}
+  .nav-actions{order:3}
+}
+
+/* CTA band: give the secondary button a clear outline-on-band treatment */
+.cta-band .btn-ghost{background:transparent;border-color:color-mix(in srgb,var(--on-brand) 55%,transparent);color:var(--on-brand)}
+.cta-band .btn-ghost:hover{background:color-mix(in srgb,var(--on-brand) 12%,transparent);border-color:var(--on-brand);color:var(--on-brand)}
