@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "FDK2Y374V7.co.divly.app",
+        "appID": "43AZ4YP2DA.co.divly.household",
         "paths": ["/invite", "/invite/*"],
         "components": [
           { "/": "/invite", "comment": "Household invite landing" },
