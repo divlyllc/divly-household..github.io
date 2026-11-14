@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email confirmed · Divly</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Inter:wght@400;500&family=Nunito:wght@900&display=swap" rel="stylesheet" />
+  <style>
+    :root{ --blue:#2563FF; --ink:#0E1726; --muted:#6B7280; --border:rgba(14,23,38,.22); --green:#0B7D61; }
+    *{box-sizing:border-box} html,body{margin:0;height:100%}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:var(--ink);
+      background:#FFF;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+    .card{max-width:420px;width:100%}
+    .wordmark{font-family:'Nunito',sans-serif;font-weight:900;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
+    .wordmark .y{color:var(--blue)}
+    .check{width:64px;height:64px;border-radius:999px;background:rgba(11,125,97,.1);color:var(--green);
+      display:flex;align-items:center;justify-content:center;font-size:34px;margin:28px auto 0}
+    h1{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:28px;line-height:1.15;margin:20px 0 8px}
+    p{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 20px}
+    .steps{color:var(--ink);font-size:15px;line-height:1.7;text-align:left;display:inline-block;margin:0 auto 8px;padding:0 0 0 2px}
+    .steps b{font-weight:500}
+    .hint{font-size:13px;color:var(--muted);margin-top:16px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="wordmark">divl<span class="y">y</span></div>
+    <div class="check" aria-hidden="true">&#10003;</div>
+    <h1>Your email is confirmed</h1>
+    <p>Your Divly account is all set. You can close this tab.</p>
+    <div class="steps">
+      <b>Next:</b> open the <b>Divly</b> app and tap <b>&ldquo;I&rsquo;ve confirmed &mdash; continue&rdquo;</b>
+      (or just log in with your email and password) to finish.
+    </div>
+    <p class="hint">Didn&rsquo;t mean to create an account? You can safely ignore this &mdash; nothing else happens.</p>
+  </div>
+</body>
+</html>
